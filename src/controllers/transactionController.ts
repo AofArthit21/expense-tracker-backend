@@ -68,25 +68,6 @@ export const searchTransactions = async (req: AuthRequest, res: Response) => {
   }
 };
 
-// ลบรายการของ user
-// export const deleteTransaction = async (req: AuthRequest, res: Response) => {
-// try {
-// const userId = req.user?.userId;
-// const transaction = await Transaction.findOne({
-//   _id: req.params.id,
-//   userId,
-// });
-
-// if (!transaction) {
-//   return res.status(404).json({ message: "Transaction not found" });
-// }
-
-// await transaction.deleteOne();
-// return res.json({ message: "Transaction deleted" }); // ✅ เพิ่ม return
-// } catch (error) {
-// return res.status(500).json({ message: "Server error" }); // ✅ เพิ่ม return
-// }
-// };
 export const deleteTransaction: RequestHandler = async (req, res) => {
   try {
     const userId = (req as AuthRequest).user?.userId; // Type cast req เป็น AuthRequest
